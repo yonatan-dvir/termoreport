@@ -6,29 +6,156 @@ body,
   padding: 0;
 }
 
-.container {
+.map-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.welcome-message {
+.overlay {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
-  height: 35%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 5; /* Ensure it's behind the emergency window */
+}
+
+.emergency-window {
+  position: absolute;
+  width: 87%;
+  max-width: 600px;
+  height: auto;
   bottom: 20px;
-  left: 20%;
-  right: 20%;
-  padding: 10px 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
   background: rgba(255, 255, 255, 0.95); /* Semi-transparent background */
-  border-radius: 5px;
+  border-radius: 35px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  text-align: center;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 5px; /* Adjust as needed for spacing from top */
+  right: 0px; /* Adjust as needed for spacing from right */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black; /* Ensure text and icon color is black */
 }
 
 .responsive-iframe {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+@media (max-width: 768px) {
+  .welcome-message {
+    width: 90%;
+    padding: 10px;
+  }
+}
+
+.emergency-type-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.emergency-type {
+  background: #edecec;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.emergency-type:hover {
+  cursor: pointer;
+  scale: 1.02;
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+  .welcome-message {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .emergency-type-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .emergency-type {
+    padding: 10px;
+    align-items: center;
+  }
+}
+
+.emergency-title {
+  width: 60%;
+  font-weight: 600;
+}
+
+.emergency-type.selected {
+  background-color: rgb(16, 16, 98);
+  color: white; /* Optionally change text color for better contrast */
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  scale: 1.1;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px; /* Adjust as needed */
+  gap: 20px;
+}
+
+.side-button {
+  flex: 0 0 auto; /* Allow shrinking and no growing */
+  border: 1px solid #d8d6d6;
+  border-radius: 500px;
+  padding: 20px 20px 17px 20px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  color: black; /* Ensure text and icon color is black */
+}
+
+.center-button {
+  flex: 1; /* Take remaining space */
+  background: #0653d7;
+  border: none;
+  padding: 15px 0; /* Adjust padding as needed */
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 20px; /* Increase font size for better visibility */
+  color: white; /* Ensure text color is black */
+}
+
+.center-button:hover {
+  background-color: #ccc; /* Example: Change background color on hover */
+}
+
+.center-button.disabled {
+  background: #cccccc; /* Gray background for disabled state */
+  cursor: not-allowed; /* Indicate disabled state */
 }

@@ -26,13 +26,12 @@ body {
   margin: 0;
   place-items: center;
   width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 button {
