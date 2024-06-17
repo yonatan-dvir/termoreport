@@ -23,59 +23,59 @@ const Symptoms = ({ setIsNextActive }) => {
   };
 
   return (
-    <div className="groups">
-      <div className="group-row">
+    <div className="symptoms">
+      <div className="symptom-row">
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("Rapid heartbeat") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("Rapid heartbeat")}
         >
-          <div className="emergency-title">Rapid heartbeat</div>
+          <div className="symptom-title">Rapid heartbeat</div>
         </div>
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("Sweating") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("Sweating")}
         >
-          <div className="group-title">Sweating</div>
+          <div className="symptom-title">Sweating</div>
         </div>
       </div>
-      <div className="group-row">
+      <div className="symptom-row">
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("Nausea") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("Nausea")}
         >
-          <div className="group-title">Nausea</div>
+          <div className="symptom-title">Nausea</div>
         </div>
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("Breathless") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("Breathless")}
         >
-          <div className="group-title">Breathless</div>
+          <div className="symptom-title">Breathless</div>
         </div>
       </div>
-      <div className="group-row">
+      <div className="symptom-row">
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("Other") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("Other")}
         >
-          <div className="group-title">Other</div>
+          <div className="symptom-title">Other</div>
         </div>
         <div
-          className={`group ${
+          className={`symptom ${
             selectedSymptoms.includes("None") ? "selected" : ""
           }`}
           onClick={() => handleSymptomClick("None")}
         >
-          <div className="group-title">None</div>
+          <div className="symptom-title">None</div>
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ const Groups = ({ setIsNextActive }) => {
           }`}
           onClick={() => handleGroupClick("children")}
         >
-          <div className="emergency-title">Children</div>
+          <div className="group-title">Children</div>
         </div>
         <div
           className={`group ${

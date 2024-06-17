@@ -54,25 +54,30 @@ body,
   border: 0;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .welcome-message {
     width: 90%;
     padding: 10px;
   }
-}
+} */
 
 .type-row,
 .place-row,
-.group-row {
+.group-row,
+.symptom-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 10px;
 }
+.activityAffect-row {
+  margin: 10px;
+}
 
 .type,
 .place,
-.group {
+.group,
+.symptom {
   background: #edecec;
   padding: 10px;
   border-radius: 5px;
@@ -84,9 +89,22 @@ body,
   gap: 5px;
 }
 
+.activityAffect {
+  background: #edecec;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .type,
 .place,
-.group :hover {
+.group,
+.symptom,
+.activityAffect :hover {
   cursor: pointer;
   scale: 1.02;
 }
@@ -100,21 +118,32 @@ body,
 
   .type-row,
   .group-row,
-  .place-row {
+  .place-row,
+  .symptom-row {
     grid-template-columns: 1fr 1fr;
     gap: 9px;
     margin: 7px;
   }
 
+  .activityAffect-row {
+    margin: 9px;
+  }
+
   .type,
   .group,
-  .place {
+  .place,
+  .symptom {
     padding: 10px;
     align-items: center;
   }
+  .activityAffect {
+    padding: 20px;
+  }
 }
 
-.type-title {
+.type-title,
+.symptom-title,
+.activityAffect-title {
   width: 60%;
   font-weight: 600;
 }
@@ -123,20 +152,25 @@ body,
   width: 65%;
   font-weight: 600;
 }
-.group-title {
+.group-title,
+.symptom-title {
   width: 80%;
   font-weight: 600;
 }
 
 .type.selected,
 .group.selected,
-.place.selected {
+.place.selected,
+.symptom.selected,
+.activityAffect.selected {
   background-color: rgb(16, 16, 98);
   color: white; /* Change text color for better contrast */
 }
 
-.groups {
-  margin-bottom: 82px;
+.groups,
+.symptoms,
+.activityAffects {
+  margin-bottom: 60px;
 }
 
 .cancel-button {
