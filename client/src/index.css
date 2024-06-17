@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Manrope;
   line-height: 1.5;
   font-weight: 400;
 
@@ -30,14 +32,15 @@ body {
 }
 
 h1 {
-  font-size: 2.3rem;
-  line-height: 1.2;
+  font-size: 34.03px;
+  line-height: 46.48px;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  font-weight: 400;
+  font-size: 20px;
+  line-height: 27.32px;
+  font-weight: 600;
   margin-bottom: 25px;
   margin-top: 35px;
 }
