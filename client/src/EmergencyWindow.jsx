@@ -1,21 +1,44 @@
 import { useState } from "react";
-import EmergencyTypes from "./EmergencyTypes";
+import Type from "./Type";
+import UrgencyLevel from "./UrgencyLevel";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import Groups from "./Groups";
+import Place from "./Place";
+import Symptoms from "./Symptoms";
+import ActivityAffect from "./ActivityAffect";
 
 function EmergencyWindow() {
-  const [page, setPage] = useState("emergencyType");
+  const [page, setPage] = useState("type");
   const [isNextActive, setIsNextActive] = useState(false);
 
   const handleNextClick = () => {
     if (!isNextActive) {
       return;
     }
-    if (page === "emergencyType") {
-      setPage("urgencyLevel");
-    } else if (page === "urgencyLevel") {
-      setPage("summary");
+
+    switch (page) {
+      case "type":
+        setPage("urgencyLevel");
+        break;
+      case "urgencyLevel":
+        setPage("groups");
+        break;
+      case "groups":
+        setPage("place");
+        break;
+      case "place":
+        setPage("symptoms");
+        break;
+      case "symptoms":
+        setPage("activityAffect");
+        break;
+      case "activityAffect":
+        setPage("summary");
+        break;
+      default:
+        break;
     }
     setIsNextActive(false);
   };
@@ -25,28 +48,53 @@ function EmergencyWindow() {
       <button className="cancel-button">
         <CancelIcon style={{ fontSize: 40 }} />
       </button>
-      {page === "emergencyType" && (
+      {page === "type" && (
         <>
-          <h1>Type of emergency</h1>{" "}
-          <EmergencyTypes
-            isNextActive={isNextActive}
-            setIsNextActive={setIsNextActive}
-          />
+          <h2>Type of emergency</h2>
+          <Type setIsNextActive={setIsNextActive} />
         </>
       )}
-      {page === "urgencyLevel" && <h1>Level of Urgency</h1>}
+      {page === "urgencyLevel" && (
+        <>
+          <h2>Level of Urgency</h2>
+          <UrgencyLevel setIsNextActive={setIsNextActive} />
+        </>
+      )}
+      {page === "groups" && (
+        <>
+          <h2>Any specific groups?</h2>
+          <Groups setIsNextActive={setIsNextActive} />
+        </>
+      )}
+      {page === "place" && (
+        <>
+          <h1>Place</h1>
+          <Place setIsNextActive={setIsNextActive} />
+        </>
+      )}
+      {page === "symptoms" && (
+        <>
+          <h1>Symptoms</h1>
+          <Symptoms setIsNextActive={setIsNextActive} />
+        </>
+      )}
+      {page === "activityAffect" && (
+        <>
+          <h1>Activity Affect</h1>
+          <ActivityAffect setIsNextActive={setIsNextActive} />
+        </>
+      )}
       {page === "summary" && <h1>Summary</h1>}
       <div className="nav-buttons">
         <button className="side-button">
           <CameraAltOutlinedIcon />
         </button>
         <button
-          className={`center-button ${isNextActive === true ? "" : "disabled"}`}
+          className={`center-button ${isNextActive ? "" : "disabled"}`}
           onClick={handleNextClick}
         >
           Next
         </button>
-
         <button className="side-button">
           <PhoneOutlinedIcon />
         </button>
