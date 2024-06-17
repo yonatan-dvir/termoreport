@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const UrgencyLevel = ({ setIsNextActive }) => {
-  const [selectedStep, setSelectedStep] = useState(0);
+const UrgencyLevel = ({ setIsNextActive, selectedStep, setSelectedStep }) => {
   const urgencyLevels = [
     "Calm 😌",
     "Mild 🙂",
@@ -18,6 +17,7 @@ const UrgencyLevel = ({ setIsNextActive }) => {
   useEffect(() => {
     console.log("setting to true");
     setIsNextActive(true);
+    document.querySelector(".center-button").innerHTML = "Next";
   }, []);
 
   const handleStepClick = (step) => {

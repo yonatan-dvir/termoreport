@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const ActivityAffect = ({ setIsNextActive }) => {
-  const [selectedActivityAffect, setSelectedActivityAffect] = useState("");
+const ActivityAffect = ({ setIsNextActive,selectedActivityAffect, setSelectedActivityAffect }) => {
 
   useEffect(() => {
     console.log("setting to true");

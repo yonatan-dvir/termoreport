@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Symptoms = ({ setIsNextActive }) => {
-  const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-
+const Symptoms = ({
+  setIsNextActive,
+  selectedSymptoms,
+  setSelectedSymptoms,
+}) => {
   useEffect(() => {
     console.log("setting to true");
     setIsNextActive(true);

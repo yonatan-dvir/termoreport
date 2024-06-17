@@ -1,9 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Groups = ({ setIsNextActive }) => {
-  const [selectedGroups, setSelectedGroups] = useState([]);
-
+const Groups = ({ setIsNextActive, selectedGroups, setSelectedGroups }) => {
   useEffect(() => {
     console.log("setting to true");
     setIsNextActive(true);

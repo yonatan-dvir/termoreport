@@ -4,9 +4,7 @@ import HouseOutlinedIcon from "@mui/icons-material/HouseOutlined";
 import RvHookupOutlinedIcon from "@mui/icons-material/RvHookupOutlined";
 import DirectionsBusFilledOutlinedIcon from "@mui/icons-material/DirectionsBusFilledOutlined";
 
-const Place = ({ setIsNextActive }) => {
-  const [place, setPlace] = useState("");
-
+const Place = ({ setIsNextActive, selectedPlace, setSelectedPlace }) => {
   useEffect(() => {
     console.log("setting to true");
     setIsNextActive(true);
@@ -14,7 +12,7 @@ const Place = ({ setIsNextActive }) => {
   }, []);
 
   const handlePlaceClick = (place) => {
-    setPlace(place); // Update the selected place in state
+    setSelectedPlace(place); // Update the selected place in state
     setIsNextActive(true);
     document.querySelector(".center-button").innerHTML = "Next";
   };
@@ -22,7 +20,9 @@ const Place = ({ setIsNextActive }) => {
     <div>
       <div className="place-row">
         <div
-          className={`place ${place === "Public place" ? "selected" : ""}`}
+          className={`place ${
+            selectedPlace === "Public place" ? "selected" : ""
+          }`}
           onClick={() => handlePlaceClick("Public place")}
         >
           <LocationCityOutlinedIcon />
@@ -31,7 +31,9 @@ const Place = ({ setIsNextActive }) => {
           </div>
         </div>
         <div
-          className={`place ${place === "Residential area" ? "selected" : ""}`}
+          className={`place ${
+            selectedPlace === "Residential area" ? "selected" : ""
+          }`}
           onClick={() => handlePlaceClick("Residential area")}
         >
           <HouseOutlinedIcon />
@@ -40,7 +42,9 @@ const Place = ({ setIsNextActive }) => {
       </div>
       <div className="place-row">
         <div
-          className={`place ${place === "High traffic area" ? "selected" : ""}`}
+          className={`place ${
+            selectedPlace === "High traffic area" ? "selected" : ""
+          }`}
           onClick={() => handlePlaceClick("High traffic area")}
         >
           <RvHookupOutlinedIcon />
@@ -51,7 +55,7 @@ const Place = ({ setIsNextActive }) => {
         </div>
         <div
           className={`place ${
-            place === "Public transportation" ? "selected" : ""
+            selectedPlace === "Public transportation" ? "selected" : ""
           }`}
           onClick={() => handlePlaceClick("Public transportation")}
         >
