@@ -68,23 +68,23 @@ function EmergencyWindow() {
       )}
       {page === "place" && (
         <>
-          <h1>Place</h1>
+          <h2>Place of the incident</h2>
           <Place setIsNextActive={setIsNextActive} />
         </>
       )}
       {page === "symptoms" && (
         <>
-          <h1>Symptoms</h1>
+          <h2>Are you experiencing any phusical symptoms?</h2>
           <Symptoms setIsNextActive={setIsNextActive} />
         </>
       )}
       {page === "activityAffect" && (
         <>
-          <h1>Activity Affect</h1>
+          <h2>Is the incident affecting your daily activities?</h2>
           <ActivityAffect setIsNextActive={setIsNextActive} />
         </>
       )}
-      {page === "summary" && <h1>Summary</h1>}
+      {page === "summary" && <h2>Summary</h2>}
       <div className="nav-buttons">
         <button className="side-button">
           <CameraAltOutlinedIcon />
