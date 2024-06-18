@@ -2,14 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 5001; // Choose a port for your server
+const config = require("./config");
+const apiKey = config.apiKey;
 
 app.use(express.json());
 app.use(cors()); // This enables CORS for all routes
 
 app.get("/api/location", async (req, res) => {
   const { latitude, longitude } = req.query;
-  const apiKey =
-    "pk.eyJ1IjoieW9uYXRhbmR2aXIiLCJhIjoiY2xwbmF4a3NkMGo5dDJtdDN1dzVuaDY1OSJ9.yD9BaMV_sDYa1C-PtrVTmw";
 
   const apiUrl = `https://api.mapbox.com/search/geocode/v6/reverse?longitude=${longitude}&latitude=${latitude}&access_token=${apiKey}`;
 
