@@ -9,6 +9,8 @@ import Place from "./Place";
 import Symptoms from "./Symptoms";
 import ActivityAffect from "./ActivityAffect";
 import Summary from "./Summary";
+import CallHelp from "./CallHelp";
+import CalmDown from "./CalmDown";
 
 function EmergencyWindow() {
   const [page, setPage] = useState("type");
@@ -30,6 +32,19 @@ function EmergencyWindow() {
         setPage("urgencyLevel");
         break;
       case "urgencyLevel":
+        if (selectedStep > 17) {
+          setPage("callHelp");
+        } else {
+          setPage("groups");
+        }
+        break;
+      case "callHelp":
+        if (document.querySelector(".center-button").innerHTML == "Call") {
+          console.log("calling...");
+        }
+        setPage("calmDown");
+        break;
+      case "calmDown":
         setPage("groups");
         break;
       case "groups":
@@ -76,6 +91,17 @@ function EmergencyWindow() {
           />
         </>
       )}
+      {page === "callHelp" && (
+        <>
+          <h2>Call for help</h2>
+          <CallHelp setIsNextActive={setIsNextActive} />
+        </>
+      )}
+      {page === "calmDown" && (
+        <>
+          <CalmDown setIsNextActive={setIsNextActive} />
+        </>
+      )}
       {page === "groups" && (
         <>
           <h2>Any specific groups?</h2>
@@ -98,7 +124,7 @@ function EmergencyWindow() {
       )}
       {page === "symptoms" && (
         <>
-          <h2>Are you experiencing any phusical symptoms?</h2>
+          <h2>Are you experiencing any physical symptoms?</h2>
           <Symptoms
             setIsNextActive={setIsNextActive}
             selectedSymptoms={selectedSymptoms}

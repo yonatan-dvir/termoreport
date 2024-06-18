@@ -70,7 +70,8 @@ body,
   gap: 10px;
   margin-top: 10px;
 }
-.activityAffect-row {
+.activityAffect-row,
+.help-row {
   margin: 10px;
 }
 
@@ -89,7 +90,8 @@ body,
   gap: 5px;
 }
 
-.activityAffect {
+.activityAffect,
+.help {
   background: #edecec;
   padding: 20px;
   border-radius: 5px;
@@ -106,7 +108,6 @@ body,
 .symptom,
 .activityAffect :hover {
   cursor: pointer;
-  scale: 1.02;
 }
 
 /* Media query for small screens */
@@ -125,7 +126,8 @@ body,
     margin: 7px;
   }
 
-  .activityAffect-row {
+  .activityAffect-row,
+  .help-row {
     margin: 8px;
   }
 
@@ -136,14 +138,16 @@ body,
     padding: 10px;
     align-items: center;
   }
-  .activityAffect {
+  .activityAffect,
+  .help {
     padding: 16px;
   }
 }
 
 .type-title,
 .symptom-title,
-.activityAffect-title {
+.activityAffect-title,
+.help-title {
   width: 60%;
   font-weight: 600;
 }
@@ -162,8 +166,9 @@ body,
 .group.selected,
 .place.selected,
 .symptom.selected,
-.activityAffect.selected {
-  background-color: rgb(16, 16, 98);
+.activityAffect.selected,
+.help.selected {
+  background-color: #021056;
   color: white; /* Change text color for better contrast */
 }
 
@@ -172,7 +177,8 @@ body,
   margin-bottom: 65px;
 }
 
-.activityAffects {
+.activityAffects,
+.helps {
   margin-bottom: 35px;
 }
 
@@ -195,7 +201,7 @@ body,
 
 .side-button {
   flex: 0 0 auto; /* Allow shrinking and no growing */
-  border: 1px solid #d8d6d6;
+  border: 1.3px solid #d8d6d6;
   border-radius: 500px;
   padding: 20px 20px 17px 20px;
   background-color: rgb(255, 255, 255);
@@ -212,10 +218,6 @@ body,
   cursor: pointer;
   font-size: 20px; /* Increase font size for better visibility */
   color: white; /* Ensure text color is black */
-}
-
-.center-button:hover {
-  background-color: #1163f0;
 }
 
 .center-button.disabled {
@@ -305,7 +307,8 @@ body,
 }
 
 .edit {
-  align-self: center; /* Center the edit icon between title and content */
+  align-self: center;
+  background-color: transparent;
 }
 
 .edit .responsive-iframe {
@@ -315,4 +318,24 @@ body,
   margin-left: 10px; /* Space between icon and iframe */
   border-radius: 15px;
   border: 1px solid #cccccc;
+}
+
+.calmDown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center horizontally */
+  width: 236px;
+  height: 93px;
+  margin: auto; /* Center vertically */
+  gap: 2px;
+  margin-top: 110px;
+  margin-bottom: 100px;
+}
+
+.calmDown-message {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 35.53px;
+  align-self: center;
 }
