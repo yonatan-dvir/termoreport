@@ -6,12 +6,6 @@ const Symptoms = ({
   selectedSymptoms,
   setSelectedSymptoms,
 }) => {
-  useEffect(() => {
-    console.log("setting to true");
-    setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Skip";
-  }, []);
-
   const handleSymptomClick = (symptom) => {
     setSelectedSymptoms((prevSelectedSymptoms) => {
       if (prevSelectedSymptoms.includes(symptom)) {
@@ -21,7 +15,11 @@ const Symptoms = ({
       }
     });
     setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Next";
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
   };
 
   return (

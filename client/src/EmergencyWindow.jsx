@@ -22,12 +22,18 @@ function EmergencyWindow() {
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [selectedActivityAffect, setSelectedActivityAffect] = useState("None");
   const [selectedHelp, setSelectedHelp] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   const handleNextClick = () => {
     if (!isNextActive) {
       return;
     }
-
+    if (editMode) {
+      setEditMode(false);
+      setIsNextActive(true);
+      setPage("summary");
+      return;
+    }
     switch (page) {
       case "type":
         setPage("urgencyLevel");
@@ -87,6 +93,18 @@ function EmergencyWindow() {
     setIsNextActive(false);
   };
 
+  useEffect(() => {
+    if (page !== "type") {
+      setIsNextActive(true);
+    }
+    if (editMode) {
+      console.log("edit mode: " + editMode);
+      document.querySelector(".center-button").innerHTML = "Back to summary";
+    } else {
+      document.querySelector(".center-button").innerHTML = "Skip";
+    }
+  }, [page]);
+
   return (
     <div className="emergency-window">
       <button className="cancel-button">
@@ -100,6 +118,7 @@ function EmergencyWindow() {
             page={page}
             selectedType={selectedType}
             setSelectedType={setSelectedType}
+            editMode={editMode}
           />
         </>
       )}
@@ -179,6 +198,8 @@ function EmergencyWindow() {
             selectedPlace={selectedPlace}
             selectedSymptoms={selectedSymptoms}
             selectedActivityAffect={selectedActivityAffect}
+            editMode={editMode}
+            setEditMode={setEditMode}
           />
         </>
       )}
@@ -190,7 +211,7 @@ function EmergencyWindow() {
           className={`center-button ${isNextActive ? "" : "disabled"}`}
           onClick={handleNextClick}
         >
-          Next
+          {editMode ? <>Back to summary</> : <>Next</>}
         </button>
         <button className="side-button">
           <PhoneOutlinedIcon />

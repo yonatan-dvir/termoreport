@@ -4,14 +4,21 @@ import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ReportIcon from "@mui/icons-material/Report";
 
-const Type = ({ setIsNextActive, selectedType, setSelectedType }) => {
+const Type = ({ setIsNextActive, selectedType, setSelectedType, editMode }) => {
   useEffect(() => {
-    document.querySelector(".center-button").innerHTML = "Next";
-  }, [setIsNextActive]);
+    if (!editMode) {
+      setIsNextActive(false);
+    }
+  }, []);
 
   const handleTypeClick = (type) => {
     setSelectedType(type);
-    console.log("first is " + type);
+    console.log(document.querySelector(".center-button").innerHTML);
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
     setIsNextActive(true);
   };
   return (

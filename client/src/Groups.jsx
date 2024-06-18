@@ -2,12 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Groups = ({ setIsNextActive, selectedGroups, setSelectedGroups }) => {
-  useEffect(() => {
-    console.log("setting to true");
-    setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Skip";
-  }, []);
-
   const handleGroupClick = (group) => {
     setSelectedGroups((prevSelectedGroups) => {
       if (prevSelectedGroups.includes(group)) {
@@ -17,7 +11,11 @@ const Groups = ({ setIsNextActive, selectedGroups, setSelectedGroups }) => {
       }
     });
     setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Next";
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
   };
 
   return (

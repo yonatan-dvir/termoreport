@@ -10,6 +10,8 @@ const Summary = ({
   selectedPlace,
   selectedSymptoms,
   selectedActivityAffect,
+  editMode,
+  setEditMode,
 }) => {
   useEffect(() => {
     document.querySelector(".center-button").innerHTML = "Send Alert";
@@ -17,6 +19,7 @@ const Summary = ({
   }, []);
 
   const handleEditClick = (step) => {
+    setEditMode(true);
     setPage(step);
   };
 

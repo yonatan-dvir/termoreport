@@ -20,7 +20,11 @@ const UrgencyLevel = ({ setIsNextActive, selectedStep, setSelectedStep }) => {
 
   useEffect(() => {
     setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Next";
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
   }, []);
 
   useEffect(() => {

@@ -5,16 +5,15 @@ import RvHookupOutlinedIcon from "@mui/icons-material/RvHookupOutlined";
 import DirectionsBusFilledOutlinedIcon from "@mui/icons-material/DirectionsBusFilledOutlined";
 
 const Place = ({ setIsNextActive, selectedPlace, setSelectedPlace }) => {
-  useEffect(() => {
-    console.log("setting to true");
-    setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Skip";
-  }, []);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place); // Update the selected place in state
     setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Next";
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
   };
   return (
     <div>

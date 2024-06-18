@@ -1,18 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const ActivityAffect = ({ setIsNextActive,selectedActivityAffect, setSelectedActivityAffect }) => {
-
-  useEffect(() => {
-    console.log("setting to true");
-    setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Skip";
-  }, []);
+const ActivityAffect = ({
+  setIsNextActive,
+  selectedActivityAffect,
+  setSelectedActivityAffect,
+}) => {
 
   const handleActivityAffectClick = (activityAffect) => {
     setSelectedActivityAffect(activityAffect);
     setIsNextActive(true);
-    document.querySelector(".center-button").innerHTML = "Next";
+    if (
+      document.querySelector(".center-button").innerHTML !== "Back to summary"
+    ) {
+      document.querySelector(".center-button").innerHTML = "Next";
+    }
   };
 
   return (
