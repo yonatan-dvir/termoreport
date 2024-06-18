@@ -1,19 +1,22 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const CallHelp = ({ setIsNextActive }) => {
+const CallHelp = ({ setIsNextActive, selectedHelp, setSelectedHelp }) => {
   useEffect(() => {
     setIsNextActive(true);
     document.querySelector(".center-button").innerHTML = "Not now";
   }, []);
 
   const handleHelpClick = (help) => {
+    if (selectedHelp === help) {
+      setSelectedHelp(null);
+      document.querySelector(".center-button").innerHTML = "Not now";
+      document.querySelector(`.help.${help}`).classList.remove("selected");
+    }
     setSelectedHelp(help);
     document.querySelector(".center-button").innerHTML = "Call";
     setIsNextActive(true);
   };
-
-  const [selectedHelp, setSelectedHelp] = useState("");
 
   return (
     <div className="helps">

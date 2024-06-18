@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Type from "./Type";
 import UrgencyLevel from "./UrgencyLevel";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -21,6 +21,7 @@ function EmergencyWindow() {
   const [selectedPlace, setSelectedPlace] = useState("None");
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [selectedActivityAffect, setSelectedActivityAffect] = useState("None");
+  const [selectedHelp, setSelectedHelp] = useState("");
 
   const handleNextClick = () => {
     if (!isNextActive) {
@@ -40,7 +41,28 @@ function EmergencyWindow() {
         break;
       case "callHelp":
         if (document.querySelector(".center-button").innerHTML == "Call") {
-          console.log("calling...");
+          const userConfirmed = window.confirm(
+            `Call to ${selectedHelp.toLowerCase()}?`
+          );
+          if (userConfirmed) {
+            if (selectedHelp === "Police") {
+              window.location.href = "tel:100";
+            }
+            if (selectedHelp === "Ambulance") {
+              window.location.href = "tel:101";
+            }
+            if (selectedHelp === "FireFighters") {
+              window.location.href = "tel:102";
+            }
+            setPage("calmDown");
+          } else {
+            document.querySelector(".center-button").style.backgroundColor =
+              "#3C4EF3";
+            document.querySelector(".center-button").innerHTML = "Skip";
+            setSelectedHelp("");
+            setIsNextActive(true);
+            break;
+          }
         }
         setPage("calmDown");
         break;
@@ -94,7 +116,11 @@ function EmergencyWindow() {
       {page === "callHelp" && (
         <>
           <h2>Call for help</h2>
-          <CallHelp setIsNextActive={setIsNextActive} />
+          <CallHelp
+            setIsNextActive={setIsNextActive}
+            selectedHelp={selectedHelp}
+            setSelectedHelp={setSelectedHelp}
+          />
         </>
       )}
       {page === "calmDown" && (
