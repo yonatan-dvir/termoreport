@@ -60,7 +60,6 @@ function App() {
 
   return (
     <div className="map-container">
-      <h1>{userCoordinates?.latitude}</h1>
       {showEmergencyWindow && (
         <>
           <div
