@@ -10,13 +10,15 @@ const Summary = ({
   selectedPlace,
   selectedSymptoms,
   selectedActivityAffect,
-  editMode,
   setEditMode,
+  mapSrc,
+  locationName,
 }) => {
   useEffect(() => {
     document.querySelector(".center-button").innerHTML = "Send Alert";
     document.querySelector(".center-button").style.backgroundColor = "#0653d7";
-  }, []);
+    console.log(locationName);
+  }, [locationName]);
 
   const handleEditClick = (step) => {
     setEditMode(true);
@@ -43,7 +45,7 @@ const Summary = ({
       <div className="summary-block-location">
         <div className="description">
           <div className="summary-title">Location</div>
-          <div className="summary-content">Tel Aviv-Hashalom</div>
+          <div className="summary-content">{locationName}</div>
         </div>
         <div className="edit">
           <iframe
@@ -52,8 +54,11 @@ const Summary = ({
             scrolling="no"
             marginHeight="0"
             marginWidth="0"
-            src="https://maps.google.com/maps?width=100%25&amp;height=30&amp;hl=en&amp;q=tel%20aviv%20hashalom+(%D7%AA%D7%97%D7%A0%D7%AA%20%D7%A8%D7%9B%D7%91%D7%AA)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-          ></iframe>
+            src={mapSrc}
+          >
+            {" "}
+            <a href="https://www.gps.ie/">gps systems</a>
+          </iframe>
         </div>
       </div>
       <div className="summary-block">

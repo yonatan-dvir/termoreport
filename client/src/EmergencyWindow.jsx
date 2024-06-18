@@ -12,7 +12,7 @@ import Summary from "./Summary";
 import CallHelp from "./CallHelp";
 import CalmDown from "./CalmDown";
 
-function EmergencyWindow() {
+function EmergencyWindow({ onClose, mapSrc, locationName }) {
   const [page, setPage] = useState("type");
   const [isNextActive, setIsNextActive] = useState(false);
   const [selectedType, setSelectedType] = useState("");
@@ -105,9 +105,13 @@ function EmergencyWindow() {
     }
   }, [page]);
 
+  const handleClose = () => {
+    onClose();
+  };
+
   return (
     <div className="emergency-window">
-      <button className="cancel-button">
+      <button className="cancel-button" onClick={handleClose}>
         <CancelIcon style={{ fontSize: 40 }} />
       </button>
       {page === "type" && (
@@ -198,8 +202,9 @@ function EmergencyWindow() {
             selectedPlace={selectedPlace}
             selectedSymptoms={selectedSymptoms}
             selectedActivityAffect={selectedActivityAffect}
-            editMode={editMode}
             setEditMode={setEditMode}
+            mapSrc={mapSrc}
+            locationName={locationName}
           />
         </>
       )}
